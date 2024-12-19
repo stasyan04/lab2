@@ -1,0 +1,267 @@
+@color-black: #000000;
+@color-dark-gray: #141414;
+@color-mid-gray: #222222;
+@color-light-gray: #636363;
+@color-white: #ffffff;
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.base-button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: @color-black;
+  color: @color-white;
+}
+
+header {
+  background-color: @color-dark-gray;
+  padding: 1rem;
+  .flex-between();
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: @color-white;
+  }
+
+  .search-container {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      background-color: @color-mid-gray;
+      color: @color-white;
+      width: 200px;
+    }
+  }
+}
+
+.primary-btn {
+  .base-button();
+  padding: 0.5rem 1rem;
+  background-color: @color-light-gray;
+  color: @color-white;
+
+  &:hover {
+    background-color: @color-white;
+    color: @color-black;
+  }
+}
+
+.main-nav {
+  background-color: @color-dark-gray;
+  padding: 0.5rem 0;
+
+  ul {
+    .reset-list();
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin: 0 1rem;
+
+      a {
+        color: @color-white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  min-height: calc(100vh - 120px);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.sidebar {
+  background-color: @color-dark-gray;
+  width: 200px;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.sidebar-left {
+  .sidebar();
+
+  nav ul {
+    .reset-list();
+
+    li {
+      margin-bottom: 0.5rem;
+
+      a {
+        color: @color-white;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem;
+
+        &:hover {
+          background-color: @color-mid-gray;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+.divider {
+  border-bottom: 1px solid @color-mid-gray;
+  margin: 1rem 0;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.featured-content {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.destination-card {
+  background-color: @color-dark-gray;
+  border-radius: 4px;
+  overflow: hidden;
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-content {
+    padding: 1.5rem;
+
+    h2 {
+      margin-bottom: 1rem;
+      color: @color-white;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.sidebar-right {
+  .sidebar();
+
+  .trending {
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      .reset-list();
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid @color-mid-gray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+
+        button {
+          padding: 0.25rem 0.5rem;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    width: 100%;
+  }
+
+  .sidebar-left nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+      margin-bottom: 0;
+    }
+  }
+
+  .featured-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-container {
+    width: 100%;
+
+    input {
+      flex-grow: 1;
+    }
+  }
+
+  .trending ul li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
